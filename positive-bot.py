@@ -23,6 +23,7 @@ def app():
     put_link('代码', 'https://github.com/qwIvan/China-No.1', new_window=True)
     while True:
         user_input = input("请说点什么：", type=TEXT)
+        put_markdown('------')
         put_markdown('> ' + user_input)
         print('> ' + user_input)
         msg.append({"role":"user","content":user_input})
@@ -37,7 +38,6 @@ def app():
             result = chunk['choices'][0]['delta'].get('content', '')
             answer += result
             put_html(result)
-        put_markdown('------')
         print(answer)
         print('------')
         msg.append({"role":"assistant","content":answer})
