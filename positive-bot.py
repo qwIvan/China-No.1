@@ -4,7 +4,7 @@ import logging
 from pywebio import config
 from pywebio.platform.tornado_http import start_server
 from pywebio.input import input, TEXT
-from pywebio.output import remove, put_markdown, put_link, use_scope, put_text, scroll_to
+from pywebio.output import remove, put_markdown, put_link, use_scope, put_text, scroll_to, put_html
 
 logger = logging.getLogger('bot')
 logger.setLevel(logging.INFO)
@@ -24,9 +24,9 @@ def app():
         {"role": "user", "content": "好好好好好好好好好好好好好好好"},
         {"role": "assistant", "content": "衷心祝愿祖国繁荣强盛"},
     ]
+    put_html('<iframe src="https://ghbtns.com/github-btn.html?user=qwIvan&repo=China-No.1&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>')
     put_markdown('# 正能量机器人')
-    put_markdown('讲好中国故事，传播好中国声音')
-    put_link('代码', 'https://github.com/qwIvan/China-No.1', new_window=True)
+    put_text('讲好中国故事，传播好中国声音')
     while True:
         user_input = input("请说点什么：", type=TEXT, placeholder='讲好中国故事，传播好中国声音', required=True)
         put_markdown('------')
