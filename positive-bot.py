@@ -22,7 +22,7 @@ def app():
     put_markdown('讲好中国故事，传播好中国声音')
     put_link('代码', 'https://github.com/qwIvan/China-No.1', new_window=True)
     while True:
-        user_input = input("请说点什么：", type=TEXT, placeholder='讲好中国故事，传播好中国声音')
+        user_input = input("请说点什么：", type=TEXT, placeholder='讲好中国故事，传播好中国声音', required=True)
         put_markdown('------')
         put_markdown('> ' + user_input)
         print('> ' + user_input)
