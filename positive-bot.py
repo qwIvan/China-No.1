@@ -28,7 +28,7 @@ def app():
     put_markdown('# 正能量机器人')
     put_text('讲好中国故事，传播好中国声音')
     while True:
-        user_input = input("请说点什么：", type=TEXT, placeholder='讲好中国故事，传播好中国声音', required=True)
+        user_input = input("请说点什么：", type=TEXT, placeholder='讲好中国故事，传播好中国声音', required=True, maxlength=100)
         put_markdown('------')
         put_markdown('> ' + user_input)
         logger.info('> ' + user_input)
