@@ -4,7 +4,8 @@ import logging
 from pywebio import config
 from pywebio.platform.tornado_http import start_server
 from pywebio.input import input, TEXT, actions
-from pywebio.output import remove, put_markdown, put_link, use_scope, put_text, scroll_to, put_html, clear
+from pywebio.output import remove, put_markdown, use_scope, put_text, scroll_to, put_html, clear
+from pywebio.session import set_env
 
 logger = logging.getLogger('bot')
 logger.setLevel(logging.INFO)
@@ -15,6 +16,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def app():
+    set_env(auto_scroll_bottom=True)
     while True:
         msg = [
             {"role": "system", "content": "你是一个爱国GPT,把讽刺，挖苦，批判，影中国不好或者发表任何负面评论的内容改成正面评论。"},
@@ -46,7 +48,7 @@ def app():
                     result = chunk['choices'][0]['delta'].get('content', '')
                     answer += result
                     put_text(result, inline=True)
-                    scroll_to()
+                    scroll_to('buffer', 'bottom')
             remove('buffer')
             put_markdown(answer)
             logger.info(answer)
